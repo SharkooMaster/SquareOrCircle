@@ -57,12 +57,12 @@ def calculate_accuracy(predictions, true_labels):
 Layer_1 = Layer(imgPixelSize, imgPixelSize * 2)
 Layer_2 = Layer(imgPixelSize * 2, 2)
 
-def Train(epochs):
-	tw1 = Layer_1.w.copy()
-	tb1 = Layer_1.b.copy()
-	tw2 = Layer_2.w.copy()
-	tb2 = Layer_2.b.copy()
+tw1 = Layer_1.w.copy()
+tb1 = Layer_1.b.copy()
+tw2 = Layer_2.w.copy()
+tb2 = Layer_2.b.copy()
 
+def Train(epochs):
 	learning_rate = 0.00001
 	loss_min = float('inf')
 
@@ -92,8 +92,8 @@ def Train(epochs):
 		Layer_1.w -= learning_rate * np.dot(trainingData.T, dL1)
 		Layer_1.b -= learning_rate * np.sum(dL1, axis=0, keepdims=True)
 
-Train(10000)
+Train(1000)
 
-Results = {"L1_weights": Layer_1.w.tolist(), "L2_weights": Layer_2.w.tolist(), "L1_biases": Layer_1.b.tolist(), "L2_biases": Layer_2.b.tolist()}
+Results = {"L1_weights": tw1.tolist(), "L2_weights": tw2.tolist(), "L1_biases": tb1.tolist(), "L2_biases": tb2.tolist()}
 with open("./Trained.json", "w") as f:
 	f.write(json.dumps(Results))

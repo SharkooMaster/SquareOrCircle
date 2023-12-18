@@ -63,7 +63,7 @@ Layer_1.b = np.array(Lb1)
 Layer_2.w = np.array(Lw2)
 Layer_2.b = np.array(Lb2)
 
-_IMG = _img("./2.png")
+_IMG = _img("./4.png")
 
 def SquareOrCircle(X):
 	Layer_1.forward(X)
